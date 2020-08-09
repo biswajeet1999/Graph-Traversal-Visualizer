@@ -1,38 +1,106 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-color: #eaf0f1;
+  overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.grid-wrapper {
+  width: 100vw;
+  height: 90vh;
+  /* background-color: green; */
+  margin-top: 10px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.row {
+  margin: 0px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.node {
+  border: 0.5px solid #0abde3;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+}
+
+.node-visited {
+  border-color: #a6f0fd;
+  animation: node-visited 1s;
+  animation-fill-mode: forwards;
+}
+
+.startNode {
+  background-color: #192a56 !important;
+  animation-name: startAnimate !important;
+  animation-duration: 0.8s !important;
+  animation-fill-mode: forwards !important;
+  position: relative;
+}
+
+.startNode:before {
+  content: "";
+  background-color: #5481f3;
+  opacity: 0.3;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: absolute;
+  animation-name: waveAnimate;
+  animation-duration: 0.5s;
+  animation-direction: normal;
+  animation-iteration-count: infinite;
+}
+
+@keyframes waveAnimate {
+  0% {
+    transform: scale(1);
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    transform: scale(1.5);
+  }
+}
+
+@keyframes startAnimate {
+  0% {
+    transform: scale(1.5) rotate(0deg);
+    border-radius: 0px;
+  }
+  100% {
+    transform: scale(0.8) rotate(45deg);
+    border-radius: 6px;
+  }
+}
+
+@keyframes node-visited {
+  0% {
+    transform: scale(0.3);
+    background-color: #192a56;
+    border-radius: 100%;
+  }
+  40% {
+    background-color: #033152;
+    transform: scale();
+  }
+  50% {
+    transform: scale(0.7);
+    background-color: #25ccf7;
+  }
+  75% {
+    background-color: #53e0bc;
+  }
+  100% {
+    transform: scale(1);
+    background-color: #4bcffa;
   }
 }
